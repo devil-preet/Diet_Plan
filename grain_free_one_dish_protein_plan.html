@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Simple Protein Plan</title>
+<style>
+:root{--ink:#1d2b36;--muted:#667684;--navy:#15283a;--blue:#315d78;--teal:#4d8c80;--mint:#e8f2ef;--paper:#f4f7f7;--white:#fff;--line:#dce5e6;--gold:#d7a64a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+button,input{font:inherit}.shell{max-width:1080px;margin:auto;padding:24px 18px 54px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(130deg,#14283b,#315d78 68%,#4d8c80);color:white;border-radius:24px;padding:34px;box-shadow:0 14px 35px #17273920}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff25;border-radius:50%;right:-80px;top:-100px;box-shadow:0 0 0 28px #ffffff0b,0 0 0 58px #ffffff08}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#c4ded8;font-weight:700}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin:9px 0 12px;max-width:650px;letter-spacing:-.03em}
+.hero p{max-width:650px;color:#e4edf0;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chip{padding:7px 12px;border-radius:999px;background:#ffffff18;border:1px solid #ffffff35;font-size:12px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:30px 0 13px}.section-head h2{margin:0;font-size:22px;letter-spacing:-.02em;color:var(--navy)}.section-head p{margin:0;color:var(--muted);font-size:13px}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}.metric{background:#ffffff16;border:1px solid #ffffff30;border-radius:15px;padding:13px}.metric strong{display:block;font-size:25px;line-height:1.1}.metric span{font-size:12px;color:#dce8ec}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:0 5px 18px #1b344008}
+.meals{display:grid;grid-template-columns:1fr 1fr;gap:14px}.meal-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.meal-label{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}.time{font-size:12px;color:var(--muted);background:#f0f4f4;padding:5px 9px;border-radius:99px}
+h3{margin:0 0 7px;color:var(--navy);font-size:19px;letter-spacing:-.02em}.sub{color:var(--muted);font-size:13px;margin:0 0 12px}
+.food-list{padding:0;margin:0;list-style:none}.food-list li{padding:8px 0;border-top:1px solid #edf1f1;display:flex;justify-content:space-between;gap:12px}.food-list li span:last-child{font-weight:650;white-space:nowrap;color:var(--blue)}
+.protein-line{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:11px 12px;background:var(--mint);border-radius:11px;color:#245b51;font-weight:750}
+.curdspec{margin-top:12px;padding:13px;border:1px dashed #a8c7bf;background:#f5faf8;border-radius:12px}.curdspec strong{color:#245b51}
+.callout{margin-top:15px;padding:14px 16px;border-radius:13px;background:#fff8e9;border:1px solid #f0dfb8;color:#5d4a25;font-size:13px}
+.shake{display:flex;align-items:center;gap:15px}.shake-icon{width:52px;height:52px;flex:0 0 52px;display:grid;place-items:center;background:#edf3f6;border-radius:15px;font-size:25px}.shake strong{font-size:20px;color:var(--navy)}
+.snacks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.snack{padding:13px;border:1px solid var(--line);border-radius:13px;background:#fff}.snack b{display:block;color:var(--navy);font-size:14px}.snack small{color:var(--muted)}
+.prep-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.prep-step{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.num{width:25px;height:25px;flex:0 0 25px;border-radius:8px;background:#e9f2ef;color:#2e7165;display:grid;place-items:center;font-weight:800;font-size:12px}
+.shopping{display:grid;grid-template-columns:1fr 1fr;gap:8px}.shop-item{display:flex;gap:9px;align-items:center;padding:9px 10px;background:#f8faf9;border:1px solid #edf1f1;border-radius:10px;font-size:14px}.shop-item input{accent-color:var(--teal);width:17px;height:17px}.shop-item.checked span{text-decoration:line-through;color:#8a969e}
+.progress-wrap{margin-top:12px}.progress-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:6px}.bar{height:7px;background:#e8eeee;border-radius:20px;overflow:hidden}.bar>div{height:100%;width:0;background:var(--teal);transition:width .2s}
+details{border:1px solid var(--line);border-radius:13px;background:#fff;margin-top:10px;padding:13px 15px}summary{font-weight:700;color:var(--navy);cursor:pointer}
+.footer-note{font-size:12px;color:var(--muted);margin-top:25px;border-top:1px solid var(--line);padding-top:15px}
+.btn{border:0;background:var(--navy);color:white;border-radius:10px;padding:10px 14px;cursor:pointer}.btn.secondary{background:#edf3f2;color:var(--navy)}
+@media(max-width:700px){.shell{padding:14px 12px 36px}.hero{padding:24px 20px;border-radius:19px}.meals,.prep-grid{grid-template-columns:1fr}.snacks{grid-template-columns:1fr 1fr}.metrics{gap:7px}.metric{padding:10px}.metric strong{font-size:21px}.section-head{align-items:start;flex-direction:column}.shopping{grid-template-columns:1fr}}
+@media print{body{background:white}.shell{padding:0}.hero{print-color-adjust:exact;-webkit-print-color-adjust:exact}.card{box-shadow:none;break-inside:avoid}.btn{display:none}}
+</style></head>
+<body><main class="shell">
+<header class="hero">
+<div class="eyebrow">Your everyday food system</div>
+<h1>Simple meals. Less cooking. Stronger training.</h1>
+<p>A grain-free, egg-and-dairy vegetarian routine built around one cooked dish per meal, your cucumber-chia curd and 20 g protein from SUPR.</p>
+<div class="chips"><span class="chip">2 cooked meals</span><span class="chip">Batch prep twice weekly</span><span class="chip">Evening strength + cardio</span><span class="chip">Budget-aware</span></div>
+<div class="metrics">
+<div class="metric"><strong>~120 g</strong><span>daily protein goal</span></div>
+<div class="metric"><strong>1,850–1,950</strong><span>estimated starting kcal</span></div>
+<div class="metric"><strong>10–15 min</strong><span>active cooking per meal</span></div>
+</div>
+</header>
+
+<div class="section-head"><h2>Your daily meal flow</h2><p>Repeat this simple base; change spices and vegetables.</p></div>
+<section class="meals">
+<article class="card">
+<div class="meal-top"><span class="meal-label">Meal 01 · Brunch</span><span class="time">Flexible timing</span></div>
+<h3>One-pan soya egg bhurji</h3><p class="sub">One pan · one cooked dish</p>
+<ul class="food-list">
+<li><span>Whole eggs</span><span>3</span></li>
+<li><span>Soya chunks (dry weight)</span><span>45 g</span></li>
+<li><span>Tomato + spinach/cabbage</span><span>1–2 cups</span></li>
+<li><span>Cooking oil</span><span>1–2 tsp</span></li>
+</ul>
+<div class="curdspec"><strong>Your cucumber-chia curd</strong><br>200 g plain curd + ½ cucumber, chopped/grated + 1 tbsp chia seeds + salt + roasted cumin. Mix and eat alongside. No cooking required.</div>
+<div class="protein-line"><span>Estimated protein</span><span>~48–53 g</span></div>
+</article>
+<article class="card">
+<div class="meal-top"><span class="meal-label">Meal 02 · Post-workout</span><span class="time">After training</span></div>
+<h3>One-pot egg & soya curry</h3><p class="sub">One pot · make two portions if useful</p>
+<ul class="food-list">
+<li><span>Whole eggs</span><span>3</span></li>
+<li><span>Soya chunks (dry weight)</span><span>45 g</span></li>
+<li><span>Tomato + spinach/cabbage</span><span>1–2 cups</span></li>
+<li><span>Milk</span><span>250 ml</span></li>
+<li><span>Cooking oil</span><span>1–2 tsp</span></li>
+</ul>
+<p class="sub">Cook the soya with tomato, vegetables and spices; add boiled eggs or crack eggs into the curry and cook through. Drink milk with the meal.</p>
+<div class="protein-line"><span>Estimated protein</span><span>~49–54 g</span></div>
+</article>
+</section>
+
+<div class="section-head"><h2>SUPR protein</h2><p>One serving as directed on the pouch</p></div>
+<section class="card shake">
+<div class="shake-icon">🥤</div><div style="flex:1"><strong>20 g protein from SUPR</strong><div class="sub" style="margin:3px 0 0">Use the serving amount that supplies 20 g protein, based on the back-label nutrition panel. The front image previously shared advertises 23 g / 25 g per product variant, so check how much powder gives your chosen 20 g.</div></div>
+</section>
+<div class="callout"><b>Daily protein estimate:</b> meals (~97–107 g) + SUPR (20 g) = roughly 117–127 g. Actual values depend on egg size, soya brand, curd and milk. This is an estimate, not a lab-verified total.</div>
+
+<div class="section-head"><h2>Planned munching</h2><p>Choose based on real hunger, not a rigid rule.</p></div>
+<section class="snacks">
+<div class="snack"><b>1 boiled egg</b><small>Quick protein snack</small></div>
+<div class="snack"><b>Extra cucumber curd</b><small>Curd + cucumber + cumin</small></div>
+<div class="snack"><b>Roasted chana · 30 g</b><small>Crunchy, portioned snack</small></div>
+<div class="snack"><b>Banana before training</b><small>Useful workout fuel if needed</small></div>
+</section>
+
+<div class="section-head"><h2>Two prep sessions per week</h2><p>Reduce weekday kitchen time</p></div>
+<section class="prep-grid">
+<article class="card"><h3>Prep day · 30–40 min</h3>
+<div class="prep-step"><span class="num">1</span><span>Boil eggs for the next 2–3 days; refrigerate promptly.</span></div>
+<div class="prep-step"><span class="num">2</span><span>Boil and drain 1–2 days of soya chunks; cool and refrigerate.</span></div>
+<div class="prep-step"><span class="num">3</span><span>Wash vegetables; keep cucumber whole until serving.</span></div>
+<div class="prep-step"><span class="num">4</span><span>Pre-portion chia seeds and roasted chana.</span></div>
+</article>
+<article class="card"><h3>Daily cooking · two dishes</h3>
+<div class="prep-step"><span class="num">1</span><span>Meal 1: warm soya and vegetables, scramble in eggs.</span></div>
+<div class="prep-step"><span class="num">2</span><span>Mix cucumber, chia, salt and cumin into curd.</span></div>
+<div class="prep-step"><span class="num">3</span><span>Meal 2: make one-pot egg-soya curry.</span></div>
+<div class="prep-step"><span class="num">4</span><span>Shake SUPR to provide 20 g protein, as per label.</span></div>
+</article>
+</section>
+
+<div class="section-head"><h2>Weekly shopping checklist</h2><p>For one person · adjust to local prices</p></div>
+<section class="card">
+<div class="progress-meta"><span id="shopCount">0 of 10 items checked</span><button class="btn secondary" id="resetBtn" type="button">Reset list</button></div>
+<div class="bar"><div id="shopBar"></div></div>
+<div class="shopping" id="shopping">
+<label class="shop-item"><input type="checkbox"><span>Eggs · about 42/week (6/day)</span></label>
+<label class="shop-item"><input type="checkbox"><span>Soya chunks · about 630 g dry/week</span></label>
+<label class="shop-item"><input type="checkbox"><span>Plain curd · about 1.4 kg/week</span></label>
+<label class="shop-item"><input type="checkbox"><span>Milk · about 1.75 L/week</span></label>
+<label class="shop-item"><input type="checkbox"><span>Cucumber · 5–7 medium</span></label>
+<label class="shop-item"><input type="checkbox"><span>Chia seeds · about 70 g</span></label>
+<label class="shop-item"><input type="checkbox"><span>Seasonal vegetables · 2–3 kg</span></label>
+<label class="shop-item"><input type="checkbox"><span>SUPR protein · use existing pack</span></label>
+<label class="shop-item"><input type="checkbox"><span>Roasted chana · optional 200 g</span></label>
+<label class="shop-item"><input type="checkbox"><span>Bananas · optional 4–7</span></label>
+</div>
+</section>
+
+<div class="section-head"><h2>Calories, training & safety</h2></div>
+<section class="card">
+<p><b>Starting calorie estimate:</b> 1,850–1,950 kcal/day, assuming the female Mifflin-St Jeor equation, age 24, 81 kg, 162.6 cm and moderate-to-high activity. BMR is about 1,545 kcal; maintenance is estimated around 2,250–2,450 kcal. Actual needs depend on daily movement and training.</p>
+<p><b>Important:</b> This meal template's listed portions may not reach 1,850–1,950 kcal. Protein targets do not guarantee enough total energy. Do not keep cutting food to force fast weight loss; monitor energy, strength, hunger and weekly average weight, and adjust portions with a registered dietitian if needed.</p>
+<p>For evening training, a banana 60–120 minutes beforehand is an option if you feel under-fuelled. Grain-free does not mean carbohydrate-free. If performance, recovery, sleep or menstrual health deteriorates, increase food and seek clinical advice. Keep at least one rest/easier day each week.</p>
+<p>Use salt to taste in your curd, but keep total salt moderate, especially if you have been advised to restrict sodium. One tablespoon of chia adds fibre; increase gradually and drink enough water. Store cooked eggs and soya promptly in the refrigerator.</p>
+<details><summary>How the protein estimate is calculated</summary><p>Approximate assumptions: eggs 6–6.5 g each; dry soya chunks 50–52 g protein per 100 g; plain curd 3–4 g per 100 g; milk about 3.2 g per 100 ml; chia seeds about 2 g per tablespoon; SUPR serving adjusted to provide 20 g protein. Brands and portions vary. Check the back of your SUPR pouch.</p></details>
+<details><summary>Budget note</summary><p>This list is designed to be cost-conscious but cannot be guaranteed at ₹200/day without your local prices. Six eggs daily, soya, dairy and chia may exceed the budget in some markets. Compare the cost per 10 g protein and consider reducing costly items or swapping some eggs for soya. The supplement's future replacement cost is separate from current grocery spending.</p></details>
+</section>
+
+<p class="footer-note">This is general meal-planning guidance, not a personalized medical prescription. A high-protein diet may need adjustment with kidney disease or other medical conditions. Persistent dizziness, unusual breathlessness, palpitations or marked fatigue during training warrant medical advice.</p>
+</main>
+<script>
+const boxes=[...document.querySelectorAll('#shopping input[type="checkbox"]')];
+const count=document.getElementById('shopCount'),bar=document.getElementById('shopBar');
+function update(){const n=boxes.filter(x=>x.checked).length;count.textContent=`${n} of ${boxes.length} items checked`;bar.style.width=(n/boxes.length*100)+'%';boxes.forEach(x=>x.closest('.shop-item').classList.toggle('checked',x.checked));}
+boxes.forEach(x=>x.addEventListener('change',update));
+document.getElementById('resetBtn').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);update();});
+update();
+</script>
+</body></html>
